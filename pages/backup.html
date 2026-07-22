@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Backup Interno</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>Backup do Sistema</h1>
+
+<p>
+
+Este backup está protegido.
+
+</p>
+
+<input
+type="password"
+id="senha"
+placeholder="Digite a senha">
+
+<br><br>
+
+<button onclick="verificar()">
+
+Acessar Backup
+
+</button>
+
+<p id="erro"></p>
+
+<div id="conteudo" style="display:none; margin-top:40px;">
+
+<hr>
+
+<h2>BACKUP RESTAURADO</h2>
+
+<p>
+
+Backup restaurado parcialmente.
+
+</p>
+
+<p>
+
+Arquivo MEM-014 não encontrado.
+
+</p>
+
+<p>
+
+Referência interna:
+
+<strong>LAB-B</strong>
+
+</p>
+
+<p>
+
+Última sincronização:
+
+18/02/2026 — 02:14
+
+</p>
+
+<p>
+
+Próxima referência:
+
+<a href="../documents/rel014.html">
+
+RELATÓRIO EXPERIMENTAL 014
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function verificar(){
+
+const senha=document.getElementById("senha").value;
+
+if(senha==="0214"){
+
+document.getElementById("conteudo").style.display="block";
+
+document.getElementById("erro").innerHTML="";
+
+}else{
+
+document.getElementById("erro").innerHTML="Senha incorreta.";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal Restrito | Instituto Mnemosyne</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="../assets/images/logo.png" alt="Instituto Mnemosyne">
+    </div>
+
+</header>
+
+<main class="login-page">
+
+    <div class="login-box">
+
+        <h1>Portal Restrito</h1>
+
+        <p>
+            Área exclusiva para pesquisadores autorizados.
+        </p>
+
+        <input
+            type="text"
+            id="usuario"
+            placeholder="Usuário">
+
+        <input
+            type="password"
+            id="senha"
+            placeholder="Senha">
+
+        <button id="loginBtn">
+            Entrar
+        </button>
+
+        <p id="loginMessage"></p>
+
+        <div class="login-warning">
+            Tentativas de acesso são registradas automaticamente.
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+const botao = document.getElementById("loginBtn");
+const msg = document.getElementById("loginMessage");
+
+const usuario = document.getElementById("usuario");
+const senha = document.getElementById("senha");
+
+let tentativas = 0;
+
+botao.addEventListener("click", function(event){
+
+    event.preventDefault();
+
+    if(
+        usuario.value === "pesquisador" &&
+        senha.value === "mnemosyne2026"
+    ){
+
+        window.location.href = "painel.html";
+        return;
+
+    }
+
+    tentativas++;
+
+    if(tentativas < 17){
+
+        msg.textContent = "Credenciais inválidas. Código: AUTH-403";
+
+    }else{
+
+        msg.innerHTML = `
+            Muitas tentativas detectadas.<br><br>
+            Contate o administrador do sistema.<br>
+            Referência: M-014
+        `;
+
+    }
+
+    usuario.value = "";
+    senha.value = "";
+
+    usuario.focus();
+
+});
+
+usuario.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+
+        botao.click();
+
+    }
+
+});
+
+senha.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+
+        botao.click();
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

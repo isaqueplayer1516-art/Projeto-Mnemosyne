@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Terminal de Encerramento</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+.final-box{
+
+max-width:700px;
+margin:80px auto;
+padding:40px;
+text-align:center;
+
+}
+
+.final-box input{
+
+width:260px;
+padding:12px;
+font-size:16px;
+margin-top:20px;
+
+}
+
+.final-box button{
+
+padding:12px 24px;
+margin-top:20px;
+cursor:pointer;
+
+}
+
+#resultado{
+
+margin-top:35px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="final-box">
+
+<h1>Terminal de Encerramento</h1>
+
+<p>
+
+Digite o código obtido durante a investigação.
+
+</p>
+
+<input
+type="text"
+id="codigo"
+placeholder="Código">
+
+<br>
+
+<button onclick="verificar()">
+
+Validar
+
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function verificar(){
+
+const codigo=document.getElementById("codigo").value.trim().toUpperCase();
+
+if(codigo==="SIGMA-7"){
+
+document.getElementById("resultado").innerHTML=`
+
+<h2>🎉 INVESTIGAÇÃO CONCLUÍDA</h2>
+
+<hr>
+
+<p>
+
+Você conseguiu reconstruir toda a sequência de eventos relacionados ao Instituto Mnemosyne.
+
+</p>
+
+<p>
+
+Foram encontrados registros ocultos, documentos internos, memorandos confidenciais, arquivos protegidos e evidências do Protocolo SIGMA-7.
+
+</p>
+
+<p>
+
+O pesquisador RH-117 permanece oficialmente desaparecido.
+
+</p>
+
+<p>
+
+Seu acesso será encerrado automaticamente.
+
+</p>
+
+<br>
+
+<h3>Obrigado por jogar.</h3>
+
+`;
+
+}else{
+
+document.getElementById("resultado").innerHTML=`
+
+<p>
+
+❌ Código inválido.
+
+</p>
+
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>     
