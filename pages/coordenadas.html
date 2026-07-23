@@ -6,90 +6,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coordenadas Recuperadas</title>
+<title>Localização Recuperada</title>
 
 <link rel="stylesheet" href="../style.css">
+
+<style>
+
+body{
+overflow-x:hidden;
+}
+
+.box{
+
+max-width:850px;
+margin:70px auto;
+padding:40px;
+
+}
+
+.status{
+
+color:#4CAF50;
+font-weight:bold;
+
+animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{opacity:1;}
+50%{opacity:.45;}
+100%{opacity:1;}
+
+}
+
+.coords{
+
+margin-top:30px;
+
+padding:25px;
+
+background:#101010;
+
+color:#00ff88;
+
+border-radius:8px;
+
+font-family:Consolas,monospace;
+
+line-height:2;
+
+}
+
+.hidden{
+
+display:none;
+
+margin-top:30px;
+
+animation:fade 1s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:12px 22px;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+.alert{
+
+margin-top:35px;
+
+background:#2a0d0d;
+
+padding:18px;
+
+border-left:4px solid #ff4444;
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="dashboard">
+<div class="box">
 
-<h1>Coordenadas Recuperadas</h1>
-
-<p>
-
-As coordenadas abaixo foram extraídas da gravação recuperada.
-
-</p>
+<h1>LOCALIZAÇÃO RECUPERADA</h1>
 
 <hr>
 
-<h2>
+<p class="status">
 
-23°33'01.0"S<br>
-46°38'02.0"W
-
-</h2>
-
-<p>
-
-Última localização registrada do pesquisador
-<strong>RH-117</strong>.
+✔ Registro encontrado.
 
 </p>
 
+<p>
+
+Origem do registro:
+
+<b>Laboratório B</b>
+
+</p>
+
+<p>
+
+Último acesso confirmado:
+
+<b>18/02/2026 — 02:14</b>
+
+</p>
+
+<div class="coords">
+
+LATITUDE .......... 51.0372° N
+
 <br>
 
-<a
-href="https://maps.google.com/?q=-23.550278,-46.633889"
-target="_blank"
-class="dashboard-card">
-
-📍 Abrir localização
-
-</a>
+LONGITUDE ......... 114.0792° W
 
 <br><br>
 
-<p>
-
-Análise concluída.
-
-O sistema encontrou um último registro associado ao pesquisador.
-
-</p>
+SETOR ............. B-17
 
 <br>
 
-<hr>
-
-<h2>Sistema sincronizado.</h2>
-
-<p>
-
-Último registro recuperado com sucesso.
-
-</p>
-
-<p>
-
-Código de autenticação:
-
-</p>
-
-<h1>SIGMA-7</h1>
+STATUS ............ DESATIVADO
 
 <br>
 
-<a href="final.html" class="dashboard-card">
+REGISTRO .......... EXP-27
 
-✅ Acessar Terminal Final
+</div>
+
+<button onclick="abrir()">
+
+Estabelecer conexão
+
+</button>
+
+<div id="extra" class="hidden">
+
+<div class="alert">
+
+<b>SINAL DETECTADO.</b>
+
+<br><br>
+
+Foi encontrada atividade em um servidor externo.
+
+<br>
+
+O servidor principal não possui autorização para acessar esse conteúdo.
+
+<br><br>
+
+Será necessário utilizar um Gateway Externo.
+
+</div>
+
+<br>
+
+<a href="login.html">
+
+➡ Acessar Gateway Externo
 
 </a>
 
 </div>
+
+</div>
+
+<script>
+
+function abrir(){
+
+document.getElementById("extra").style.display="block";
+
+window.scrollTo({
+
+top:document.body.scrollHeight,
+
+behavior:"smooth"
+
+});
+
+}
+
+</script>
 
 </body>
 
