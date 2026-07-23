@@ -1,53 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Protocolo SIGMA-7</title>
+<title>SIGMA-7</title>
 
-<link rel="stylesheet" href="../style.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Consolas,monospace;
+}
+
+body{
+
+background:#050505;
+color:#00ff88;
+overflow:hidden;
+
+}
+
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+
+}
+
+#boot{
+
+padding:40px;
+white-space:pre-line;
+font-size:17px;
+line-height:1.6;
+
+}
+
+#painel{
+
+display:none;
+
+width:420px;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+background:rgba(0,0,0,.88);
+
+border:1px solid #00ff88;
+
+padding:35px;
+
+box-shadow:0 0 25px #00ff8860;
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translate(-50%,-45%);
+
+}
+
+to{
+
+opacity:1;
+transform:translate(-50%,-50%);
+
+}
+
+}
+
+h1{
+
+font-size:24px;
+margin-bottom:15px;
+
+}
+
+p{
+
+margin-bottom:18px;
+color:#7cffbc;
+
+}
+
+input{
+
+width:100%;
+padding:12px;
+
+background:#000;
+
+color:#00ff88;
+
+border:1px solid #00ff88;
+
+font-size:18px;
+
+outline:none;
+
+}
+
+button{
+
+margin-top:15px;
+
+width:100%;
+
+padding:12px;
+
+background:#00ff88;
+
+border:none;
+
+cursor:pointer;
+
+font-weight:bold;
+
+font-size:17px;
+
+}
+
+button:hover{
+
+filter:brightness(1.2);
+
+}
+
+#erro{
+
+margin-top:15px;
+
+color:#ff4d4d;
+
+display:none;
+
+}
+
+#acesso{
+
+margin-top:15px;
+
+color:#00ff88;
+
+display:none;
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="dashboard">
+<canvas id="matrix"></canvas>
+
+<div id="boot"></div>
+
+<div id="painel">
 
 <h1>PROTOCOLO SIGMA-7</h1>
 
-<p><strong>Status:</strong> RESTRITO</p>
+<p>Sistema de contenção experimental.</p>
 
-<p><strong>Nível mínimo:</strong> 4</p>
+<p>Digite a chave de autorização.</p>
 
-<hr>
+<input id="senha" autocomplete="off">
 
-<p>
+<button onclick="entrar()">AUTENTICAR</button>
 
-Os registros relacionados ao incidente do Laboratório B
-foram automaticamente realocados conforme o
-Protocolo SIGMA-7.
+<div id="erro">ACESSO NEGADO</div>
 
-</p>
-
-<p>
-
-Todo acesso é monitorado.
-
-</p>
-
-<p>
-
-Referência interna:
-
-<strong>SGM-7</strong>
-
-</p>
+<div id="acesso">ACESSO CONCEDIDO...</div>
 
 </div>
 
-</body>
+<script>
 
+const texto=[
+"Iniciando Sistema...",
+"",
+"Conectando ao servidor...",
+"",
+"Verificando integridade...",
+"",
+"Arquivo SIGMA-7 encontrado.",
+"",
+"Permissões elevadas necessárias.",
+"",
+"Aguardando autenticação..."
+];
+
+let i=0;
+
+function escrever(){
+
+if(i<texto.length){
+
+boot.innerHTML+=texto[i]+"<br>";
+
+window.scrollTo(0,document.body.scrollHeight);
+
+i++;
+
+setTimeout(escrever,450);
+
+}else{
+
+setTimeout(()=>{
+
+boot.style.display="none";
+
+painel.style.display="block";
+
+},700);
+
+}
+
+}
+
+escrever();
+
+function entrar(){
+
+let s=document.getElementById("senha").value.trim().toUpperCase();
+
+if(s==="SGM-7"){
+
+erro.style.display="none";
+
+acesso.style.display="block";
+
+setTimeout(()=>{
+
+location.href="final.html";
+
+},1800);
+
+}else{
+
+erro.style.display="block";
+
+}
+
+}
+
+document.getElementById("senha").addEventListener("keydown",e=>{
+
+if(e.key==="Enter")entrar();
+
+});
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+const size=16;
+
+const cols=Math.floor(canvas.width/size);
+
+const drops=[];
+
+for(let x=0;x<cols;x++)drops[x]=1;
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff88";
+ctx.font=size+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+let text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*size,drops[i]*size);
+
+if(drops[i]*size>canvas.height&&Math.random()>0.975)drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,40);
+
+</script>
+
+</body>
 </html>
