@@ -4,9 +4,44 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Arquivos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Repositório Interno</title>
 
 <link rel="stylesheet" href="../style.css">
+
+<style>
+
+.status{
+    float:right;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.online{color:#4CAF50;}
+.warning{color:#FFC107;}
+.locked{color:#ff5555;}
+.offline{color:#999;}
+
+.top-info{
+    background:#eef3f7;
+    border-left:5px solid #1f4d7a;
+    padding:18px;
+    margin-bottom:25px;
+    border-radius:8px;
+}
+
+.top-info p{
+    margin:6px 0;
+}
+
+.footer-note{
+    margin-top:30px;
+    font-size:13px;
+    opacity:.65;
+}
+
+</style>
 
 </head>
 
@@ -16,45 +51,118 @@
 
 <h1>Repositório Interno</h1>
 
-<p>Última sincronização: 18/07/2026</p>
+<div class="top-info">
+
+<p><strong>Servidor:</strong> MN-CORE-03</p>
+
+<p><strong>Status:</strong> Operacional</p>
+
+<p><strong>Última sincronização:</strong> 18/07/2026 - 02:17</p>
+
+<p><strong>Arquivos recuperados:</strong> 7</p>
+
+</div>
 
 <div class="memo-list">
 
 <a href="../documents/pesquisa_alpha.pdf" class="memo-item">
+
 📄 pesquisa_alpha.pdf
+
+<span class="status online">DISPONÍVEL</span>
+
 </a>
 
 <a href="sigma7.html" class="memo-item">
-🔒 protocolo_sigma.pdf
+
+🔒 PROTOCOLO SIGMA-7
+
+<span class="status warning">RESTRITO</span>
+
 </a>
 
 <a href="backup.html" class="memo-item">
+
 📦 BACKUP-2026
+
+<span class="status locked">SENHA NECESSÁRIA</span>
+
 </a>
 
-<a href="../documents/logs/cam04.log" class="memo-item">
+<a href="#" onclick="alert('Arquivo realocado para BACKUP-2026.');return false;" class="memo-item">
+
 📄 relatorio017.txt
+
+<span class="status offline">REALOCADO</span>
+
 </a>
 
 <a href="../documents/logs/cam04.log" class="memo-item">
+
 📄 cam04.log
+
+<span class="status online">DISPONÍVEL</span>
+
 </a>
 
 <a href="../assets/audio/cam04.mp3" class="memo-item">
+
 🎧 cam04.mp3
+
+<span class="status online">DISPONÍVEL</span>
+
 </a>
 
 <a href="cam04.html" class="memo-item">
+
 📷 CAM-04.png
+
+<span class="status online">DISPONÍVEL</span>
+
 </a>
 
 </div>
 
+<div class="footer-note">
+
+Sistema interno do Instituto Mnemosyne.<br>
+
+Todos os acessos são registrados automaticamente.
+
 </div>
 
+</div>
+
+<script>
+
+console.log("====================================");
+
+console.log("MNEMOSYNE INTERNAL SERVER");
+
+console.log("SIGMA-7 ACTIVE");
+
+console.log("Registro encontrado: MN-014");
+
+console.log("Funcionário autorizado: Nível 4");
+
+console.log("====================================");
+
+</script>
+
 <!--
-Mover BACKUP.ZIP para /archive.
+
+LOG INTERNO
+
+Todos os arquivos referentes ao incidente
+do Laboratório B foram redistribuídos.
+
+A documentação principal permanece
+sob Protocolo SIGMA-7.
+
+Não remova o BACKUP-2026.
+
 -->
 
 </body>
+
 </html>
